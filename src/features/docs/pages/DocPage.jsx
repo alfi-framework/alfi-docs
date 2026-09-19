@@ -5,6 +5,7 @@ import { CustomMarkdown } from '../components/CustomMarkdown'
 import { TableOfContents } from '../components/TableOfContents'
 import { DocPagination } from '../components/DocPagination'
 import { EditOnGithub } from '../components/EditOnGithub'
+import { useScrollToHash } from '../hooks/useScrollToHash'
 
 // Import markdown files eagerly via Vite glob map
 const modules = import.meta.glob('../content/*.md', {
@@ -17,6 +18,8 @@ export function DocPage() {
   const { slug } = useParams()
   const contentKey = `../content/${slug}.md`
   const markdownContent = modules[contentKey]
+
+  useScrollToHash(markdownContent)
 
   if (!slug) {
     return <Navigate to="/docs/introduction" replace />

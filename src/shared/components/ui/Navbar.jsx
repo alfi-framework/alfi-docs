@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Logo } from './Logo'
 import { ThemeToggle } from './ThemeToggle'
-import { Search, Menu, X, Heart, BookOpen } from 'lucide-react'
+import { Menu, X, Heart, BookOpen, Search } from 'lucide-react'
 import { siteConfig } from '../../../docs'
+import { SearchTrigger } from '../../../features/search/components/SearchTrigger'
+import { useSearchStore } from '../../../store/useSearchStore'
 import { cn } from '../../utils/cn'
 
 function GithubIcon({ className = 'w-4 h-4' }) {
@@ -28,6 +30,7 @@ export function Navbar({ isMobileMenuOpen: externalMobileOpen, onToggleMobileMen
   const [internalMobileOpen, setInternalMobileOpen] = useState(false)
   const location = useLocation()
   const isDocs = location.pathname.startsWith('/docs')
+  const { openSearch } = useSearchStore()
 
   const isMobileOpen = externalMobileOpen !== undefined ? externalMobileOpen : internalMobileOpen
   const toggleMobileMenu = externalToggleMobile || (() => setInternalMobileOpen(!internalMobileOpen))
@@ -74,23 +77,8 @@ export function Navbar({ isMobileMenuOpen: externalMobileOpen, onToggleMobileMen
 
         {/* Right: Controls (Desktop & Mobile) */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Desktop Search Button */}
-          {/* TODO(phase-2): Implement docsearch / command palette modal */}
-          <button
-            type="button"
-            onClick={() => {
-              /* TODO(phase-2): trigger search dialog */
-              alert('Search is under development for Phase 2!')
-            }}
-            className="hidden md:flex items-center gap-2 px-3 py-1.5 text-xs text-fg-muted bg-bg border border-border hover:border-brand/40 hover:text-fg rounded-lg transition-colors cursor-pointer group"
-            title="Search documentation (⌘K)"
-          >
-            <Search className="w-3.5 h-3.5 text-fg-muted group-hover:text-fg" />
-            <span>Search docs...</span>
-            <kbd className="inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-mono bg-surface border border-border rounded text-fg-muted">
-              <span>⌘</span>K
-            </kbd>
-          </button>
+          {/* Desktop Search Trigger */}
+          <SearchTrigger className="hidden md:flex" />
 
           {/* Desktop GitHub Link */}
           <a
@@ -155,7 +143,7 @@ export function Navbar({ isMobileMenuOpen: externalMobileOpen, onToggleMobileMen
                 type="button"
                 onClick={() => {
                   closeMobileMenu()
-                  alert('Search is under development for Phase 2!')
+                  openSearch()
                 }}
                 className="p-1 rounded-lg hover:bg-surface-hover text-fg-muted hover:text-fg transition-colors cursor-pointer"
                 title="Search documentation"
@@ -186,7 +174,7 @@ export function Navbar({ isMobileMenuOpen: externalMobileOpen, onToggleMobileMen
                 type="button"
                 onClick={() => {
                   closeMobileMenu()
-                  alert('Search is under development for Phase 2!')
+                  openSearch()
                 }}
                 className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-fg hover:bg-surface-hover transition-colors text-left cursor-pointer"
               >
