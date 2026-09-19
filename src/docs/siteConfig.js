@@ -1,5 +1,6 @@
 export const GITHUB_URL = 'https://github.com/alfi-framework/alfi-docs'
-export const GITHUB_EDIT_BASE_URL = `${GITHUB_URL}/blob/main/docs/content`
+export const GITHUB_EDIT_BASE_URL = `${GITHUB_URL}/blob/main/src/features/docs/content`
+export const SPONSOR_URL = 'https://buymeatea.online/abdulkadir'
 
 export const siteConfig = {
   name: 'Alfi',
@@ -9,5 +10,6 @@ export const siteConfig = {
   version: '0.1.0',
   previewBadge: 'v0.1 Developer Preview',
   githubUrl: GITHUB_URL,
+  sponsorUrl: SPONSOR_URL,
   getEditUrl: (slug) => `${GITHUB_EDIT_BASE_URL}/${slug}.md`,
 }
