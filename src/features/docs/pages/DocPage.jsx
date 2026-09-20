@@ -5,18 +5,26 @@ import { TableOfContents } from '../components/TableOfContents'
 import { DocPagination } from '../components/DocPagination'
 import { EditOnGithub } from '../components/EditOnGithub'
 import { useScrollToHash } from '../hooks/useScrollToHash'
+import { flatNavigation } from '../data/navigation'
 
-// Import markdown files eagerly via Vite glob map
-const modules = import.meta.glob('../content/*.md', {
+// Import markdown files eagerly via Vite glob map (supports subfolders)
+const modules = import.meta.glob('../content/**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
 })
 
+// Build lookup map by filename/slug -> raw content
+const contentMap = Object.entries(modules).reduce((acc, [path, content]) => {
+  const filename = path.split('/').pop().replace(/\.md$/, '')
+  acc[filename] = content
+  return acc
+}, {})
+
 export function DocPage() {
   const { slug } = useParams()
-  const contentKey = `../content/${slug}.md`
-  const markdownContent = modules[contentKey]
+  const markdownContent = slug ? contentMap[slug] : null
+  const currentNavItem = flatNavigation.find((item) => item.slug === slug)
 
   useScrollToHash(markdownContent)
 
@@ -46,7 +54,7 @@ export function DocPage() {
       <div className="flex gap-8">
         <article className="flex-1 max-w-3xl min-w-0">
           <CustomMarkdown content={markdownContent} />
-          <EditOnGithub slug={slug} />
+          <EditOnGithub slug={slug} folder={currentNavItem?.folder} />
           <DocPagination />
         </article>
         <TableOfContents content={markdownContent} />

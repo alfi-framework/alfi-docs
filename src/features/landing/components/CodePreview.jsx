@@ -1,13 +1,20 @@
 import { CodeBlock } from '../../docs/components/CodeBlock'
 
-const sampleCode = `<!-- TODO: replace with real Alfi API -->
-#include <iostream>
+const sampleCode = `#include <alfi/alfi.hpp>
 
 int main() {
-    // TODO: replace with real Alfi API server startup & route handler
-    std::cout << "Alfi HTTP server initialized on http://localhost:8080" << std::endl;
-    return 0;
-}`
+    auto config = alfi::loadServerConfig("app.json");
+
+    alfi::App app;
+
+    // Health Route
+    app.get("/health", [](alfi::Response& res) {
+        res.json({ {"status", "ok"} });
+    }, "Health check", "Returns service health status");
+
+    app.listen(config.port);
+}
+`
 
 export function CodePreview() {
   return (

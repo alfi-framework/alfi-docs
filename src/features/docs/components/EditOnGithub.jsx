@@ -1,8 +1,8 @@
 import { Edit3 } from 'lucide-react'
 import { siteConfig } from '../../../docs'
 
-export function EditOnGithub({ slug }) {
-  const githubEditUrl = siteConfig.getEditUrl(slug)
+export function EditOnGithub({ slug, folder }) {
+  const githubEditUrl = siteConfig.getEditUrl(slug, folder)
 
   return (
     <div className="mt-8 pt-4 border-t border-border/50 flex items-center justify-between text-xs text-fg-muted">

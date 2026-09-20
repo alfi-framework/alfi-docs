@@ -5,8 +5,8 @@ import remarkParse from 'remark-parse'
 import { toString as mdastToString } from 'mdast-util-to-string'
 import { navigation } from '../../docs/data/navigation'
 
-// Load all raw markdown docs via Vite glob map
-const rawDocs = import.meta.glob('../../docs/content/*.md', {
+// Load all raw markdown docs via Vite glob map (supports subfolders)
+const rawDocs = import.meta.glob('../../docs/content/**/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,

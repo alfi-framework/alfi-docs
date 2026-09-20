@@ -11,5 +11,8 @@ export const siteConfig = {
   previewBadge: 'v0.1 Developer Preview',
   githubUrl: GITHUB_URL,
   sponsorUrl: SPONSOR_URL,
-  getEditUrl: (slug) => `${GITHUB_EDIT_BASE_URL}/${slug}.md`,
+  getEditUrl: (slug, folder) =>
+    folder
+      ? `${GITHUB_EDIT_BASE_URL}/${folder}/${slug}.md`
+      : `${GITHUB_EDIT_BASE_URL}/${slug}.md`,
 }
