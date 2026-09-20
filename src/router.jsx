@@ -22,28 +22,37 @@ function RootLayout() {
   )
 }
 
-export const router = createBrowserRouter([
+const getBasename = () => {
+  const base = import.meta.env.BASE_URL || '/'
+  if (base === './' || base === '.') return '/'
+  return base.endsWith('/') && base.length > 1 ? base.slice(0, -1) : base
+}
+
+export const router = createBrowserRouter(
+  [
+    {
+      element: <RootLayout />,
+      children: [
+        {
+          path: '/',
+          element: <LandingPage />,
+        },
+        {
+          path: '/docs',
+          element: <Navigate to="/docs/introduction" replace />,
+        },
+        {
+          path: '/docs/:slug',
+          element: <DocPage />,
+        },
+        {
+          path: '*',
+          element: <NotFoundPage />,
+        },
+      ],
+    },
+  ],
   {
-    element: <RootLayout />,
-    children: [
-      {
-        path: '/',
-        element: <LandingPage />,
-      },
-      {
-        path: '/docs',
-        element: <Navigate to="/docs/introduction" replace />,
-      },
-      {
-        path: '/docs/:slug',
-        element: <DocPage />,
-      },
-      {
-        path: '*',
-        element: <NotFoundPage />,
-      },
-    ],
-  },
-], {
-  basename: import.meta.env.BASE_URL,
-})
+    basename: getBasename(),
+  }
+)

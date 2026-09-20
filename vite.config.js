@@ -8,6 +8,6 @@ export default defineConfig({
   base: process.env.VITE_BASE_PATH || '/alfi-docs/',
   test: {
     globals: true,
-    environment: 'jsdom',
+    environment: 'node',
   },
 })
