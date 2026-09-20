@@ -1,4 +1,3 @@
-import React from 'react'
 import { Navbar } from '../../../shared/components/ui/Navbar'
 import { HeroSection } from '../components/HeroSection'
 import { CodePreview } from '../components/CodePreview'

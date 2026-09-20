@@ -1,4 +1,3 @@
-import React from 'react'
 import { CodeBlock } from '../../docs/components/CodeBlock'
 
 const sampleCode = `<!-- TODO: replace with real Alfi API -->

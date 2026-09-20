@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Search, X, Clock, ArrowRight, Sparkles, Trash2 } from 'lucide-react'
 import { useSearchStore } from '../../../store/useSearchStore'
@@ -9,15 +9,32 @@ export function SearchDialog() {
   const { isOpen, closeSearch, toggleSearch, recentSearches, addRecentSearch, clearRecentSearches } = useSearchStore()
   const { query, setQuery, results } = useSearch()
   const [activeIndex, setActiveIndex] = useState(0)
+  const [prevQuery, setPrevQuery] = useState(query)
+
+  if (query !== prevQuery) {
+    setPrevQuery(query)
+    setActiveIndex(0)
+  }
 
   const inputRef = useRef(null)
   const resultsContainerRef = useRef(null)
   const previousFocusRef = useRef(null)
   const navigate = useNavigate()
 
-  useEffect(() => {
-    setActiveIndex(0)
-  }, [results, query])
+  const handleSelectResult = useCallback((item) => {
+    if (query.trim()) {
+      addRecentSearch(query)
+    }
+
+    closeSearch()
+    setQuery('')
+
+    const path = item.type === 'section' && item.anchor
+      ? `/docs/${item.slug}#${item.anchor}`
+      : `/docs/${item.slug}`
+
+    navigate(path)
+  }, [query, addRecentSearch, closeSearch, setQuery, navigate])
 
   // Focus trap & body scroll locking
   useEffect(() => {
@@ -95,7 +112,7 @@ export function SearchDialog() {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isOpen, results, activeIndex])
+  }, [isOpen, results, activeIndex, toggleSearch, closeSearch, handleSelectResult])
 
   // Auto scroll active item into view
   useEffect(() => {
@@ -107,21 +124,6 @@ export function SearchDialog() {
   }, [activeIndex, isOpen, results])
 
   if (!isOpen) return null
-
-  const handleSelectResult = (item) => {
-    if (query.trim()) {
-      addRecentSearch(query)
-    }
-
-    closeSearch()
-    setQuery('')
-
-    const path = item.type === 'section' && item.anchor
-      ? `/docs/${item.slug}#${item.anchor}`
-      : `/docs/${item.slug}`
-
-    navigate(path)
-  }
 
   const handleSelectRecent = (recentQuery) => {
     setQuery(recentQuery)

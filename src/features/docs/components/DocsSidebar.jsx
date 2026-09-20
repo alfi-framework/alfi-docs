@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { navigation } from '../data/navigation'
 import { Badge } from '../../../shared/components/ui/Badge'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Cpu, Zap, Route, ShieldCheck, Layers, Feather } from 'lucide-react'
 
 const features = [

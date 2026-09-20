@@ -9,7 +9,7 @@ function getInitialRecents() {
     if (!raw) return []
     const parsed = JSON.parse(raw)
     return Array.isArray(parsed) ? parsed.slice(0, 5) : []
-  } catch (e) {
+  } catch {
     return []
   }
 }

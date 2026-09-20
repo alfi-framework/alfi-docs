@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Navbar } from '../../../shared/components/ui/Navbar'
 import { DocsSidebar } from './DocsSidebar'
 

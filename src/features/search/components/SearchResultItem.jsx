@@ -1,4 +1,3 @@
-import React from 'react'
 import { FileText, Hash, Code2 } from 'lucide-react'
 import { getHighlightedChunks } from '../services/searchService'
 import { cn } from '../../../shared/utils/cn'

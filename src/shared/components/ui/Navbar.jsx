@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Logo } from './Logo'
 import { ThemeToggle } from './ThemeToggle'
@@ -29,24 +29,28 @@ function GithubIcon({ className = 'w-4 h-4' }) {
 export function Navbar({ isMobileMenuOpen: externalMobileOpen, onToggleMobileMenu: externalToggleMobile }) {
   const [internalMobileOpen, setInternalMobileOpen] = useState(false)
   const location = useLocation()
+  const [prevPath, setPrevPath] = useState(location.pathname)
+
+  if (location.pathname !== prevPath) {
+    setPrevPath(location.pathname)
+    if (internalMobileOpen) {
+      setInternalMobileOpen(false)
+    }
+  }
+
   const isDocs = location.pathname.startsWith('/docs')
   const { openSearch } = useSearchStore()
 
   const isMobileOpen = externalMobileOpen !== undefined ? externalMobileOpen : internalMobileOpen
   const toggleMobileMenu = externalToggleMobile || (() => setInternalMobileOpen(!internalMobileOpen))
 
-  const closeMobileMenu = () => {
+  const closeMobileMenu = useCallback(() => {
     if (externalToggleMobile && externalMobileOpen) {
       externalToggleMobile()
     } else {
       setInternalMobileOpen(false)
     }
-  }
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    closeMobileMenu()
-  }, [location.pathname])
+  }, [externalToggleMobile, externalMobileOpen])
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-surface/80 border-b border-border transition-colors duration-150">

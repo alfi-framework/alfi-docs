@@ -23,14 +23,13 @@ export function useSearch() {
 
   // Update results when query changes
   useEffect(() => {
-    if (!query.trim()) {
-      setResults([])
-      return
-    }
-
     startTransition(() => {
-      const found = searchDocs(query)
-      setResults(found)
+      if (!query.trim()) {
+        setResults([])
+      } else {
+        const found = searchDocs(query)
+        setResults(found)
+      }
     })
   }, [query])
 

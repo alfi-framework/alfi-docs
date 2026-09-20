@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Search } from 'lucide-react'
 import { useSearchStore } from '../../../store/useSearchStore'
 import { cn } from '../../../shared/utils/cn'
 
 export function SearchTrigger({ className = '', variant = 'default' }) {
   const { openSearch } = useSearchStore()
-  const [shortcutKey, setShortcutKey] = useState('⌘K')
-
-  useEffect(() => {
-    if (typeof navigator !== 'undefined' && /Mac/i.test(navigator.userAgent)) {
-      setShortcutKey('⌘K')
-    } else {
-      setShortcutKey('Ctrl K')
-    }
-  }, [])
+  const [shortcutKey] = useState(() =>
+    typeof navigator !== 'undefined' && /Mac/i.test(navigator.userAgent) ? '⌘K' : 'Ctrl K'
+  )
 
   if (variant === 'iconOnly') {
     return (

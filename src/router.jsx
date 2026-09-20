@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from 'react'
+/* eslint-disable react-refresh/only-export-components */
+import { Suspense, lazy } from 'react'
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom'
 import { LandingPage } from './features/landing/pages/LandingPage'
 import { DocPage } from './features/docs/pages/DocPage'
@@ -43,4 +44,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-])
+], {
+  basename: import.meta.env.BASE_URL,
+})

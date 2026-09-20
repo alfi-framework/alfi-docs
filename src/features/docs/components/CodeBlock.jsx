@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Check, Copy } from 'lucide-react'
 import { codeToHtml } from 'shiki'
 
@@ -34,7 +34,7 @@ export function CodeBlock({ code, language = 'text' }) {
         if (isMounted) {
           setHighlightedHtml(html)
         }
-      } catch (err) {
+      } catch {
         if (isMounted) {
           setHighlightedHtml('')
         }

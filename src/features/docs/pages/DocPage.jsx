@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import { DocsLayout } from '../components/DocsLayout'
 import { CustomMarkdown } from '../components/CustomMarkdown'

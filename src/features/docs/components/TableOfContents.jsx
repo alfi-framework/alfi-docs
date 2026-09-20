@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { cn } from '../../../shared/utils/cn'
 
 export function TableOfContents({ content }) {
