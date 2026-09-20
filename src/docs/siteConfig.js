@@ -1,4 +1,4 @@
-export const GITHUB_URL = 'https://github.com/alfi-framework/alfi-docs'
+export const GITHUB_URL = 'https://github.com/alfi-framework'
 export const GITHUB_EDIT_BASE_URL = `${GITHUB_URL}/blob/main/src/features/docs/content`
 export const SPONSOR_URL = 'https://buymeatea.online/abdulkadir'
 

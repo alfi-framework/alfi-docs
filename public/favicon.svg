@@ -1,12 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#121019"/>
-  <path d="M16 6L25 24H20.5L18.5 19.5H13.5L11.5 24H7L16 6Z" fill="url(#brand-grad)"/>
-  <path d="M14.5 15.5H17.5L16 12L14.5 15.5Z" fill="#121019"/>
-  <circle cx="23" cy="9" r="2.5" fill="#da93ff"/>
-  <defs>
-    <linearGradient id="brand-grad" x1="7" y1="6" x2="25" y2="24" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#da93ff"/>
-      <stop offset="1" stop-color="#931ed8"/>
-    </linearGradient>
-  </defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1240" width="512" height="512" aria-label="Purple wave logo with sparkle"><title>Wave and sparkle logo</title><path d="M98 692c-2-4 2-16 6-30 56-192 256-445 486-445 200 0 325 143 372 268 43 135 53 315 100 435 28 70 63 110 96 136 2 4-3 7-13 5-55-11-145-23-240-21-105 2-215 12-309 23-8 1-10-1-4-4 128-59 238-149 266-319 20-110 8-210-32-291 36 81 32 241-26 383 30-102 20-192-30-267-55-80-150-135-265-135-155 0-290 115-397 262-5 6-9 4-10 0m887-561c17 74 55 114 127 126-72 15-110 58-127 132-17-74-55-114-124-125 69-14 107-59 124-133" fill="#b085fa"/></svg>
