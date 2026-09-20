@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/alfi-docs/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alfi — Modern C++ HTTP Framework</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('alfi-theme-storage');
+          var theme = 'system';
+          if (saved) {
+            var parsed = JSON.parse(saved);
+            if (parsed && parsed.state && parsed.state.theme) {
+              theme = parsed.state.theme;
+            }
+          }
+          var dark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+          }
+        }
+      })();
+    </script>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script type="module" crossorigin src="/alfi-docs/assets/index-KMun4_my.js"></script>
+    <link rel="stylesheet" crossorigin href="/alfi-docs/assets/index-FPHUylhP.css">
+  </head>
+  <body class="bg-bg text-fg antialiased selection:bg-brand/30 selection:text-brand-accent transition-colors duration-150 min-h-screen">
+    <div id="root"></div>
+  </body>
+</html>
