@@ -28,43 +28,67 @@ export const navigation = [
   },
   {
     group: 'Core Concepts',
+
     folder: 'core-concepts',
+
     items: [
+
+      {
+        title: 'Project Structure',
+        slug: 'project-structure',
+        path: '/docs/project-structure',
+        folder: 'core-concepts',
+        keywords: ['project', 'structure', 'folders', 'files', 'directory', 'organization'],
+      },
+
+      {
+        title: 'Application',
+        slug: 'application',
+        path: '/docs/application',
+        folder: 'core-concepts',
+        keywords: ['app', 'application', 'server', 'instance', 'create', 'configuration'],
+      },
+
       {
         title: 'Routing',
         slug: 'routing',
         path: '/docs/routing',
         folder: 'core-concepts',
-        keywords: ['router', 'endpoint', 'path', 'params', 'match', 'url', 'trie', 'routegroup'],
+        keywords: ['router', 'route', 'endpoint', 'path', 'url', 'methods', 'routegroup'],
       },
+
       {
-        title: 'Route & Query Params',
-        slug: 'route-query-params',
-        path: '/docs/route-query-params',
+        title: 'Requests',
+        slug: 'requests',
+        path: '/docs/requests',
         folder: 'core-concepts',
-        keywords: ['query', 'url', 'parameters', 'extract', 'bind', 'searchparams'],
+        keywords: ['request', 'req', 'headers', 'body', 'query', 'params', 'http'],
       },
+
       {
-        title: 'Requests & Responses',
-        slug: 'requests-responses',
-        path: '/docs/requests-responses',
+        title: 'Responses',
+        slug: 'responses',
+        path: '/docs/responses',
         folder: 'core-concepts',
-        keywords: ['request', 'response', 'payload', 'context', 'json', 'body', 'req', 'res'],
+        keywords: ['response', 'res', 'json', 'status', 'headers', 'payload', 'http'],
       },
+
       {
-        title: 'Headers & Status Codes',
-        slug: 'headers-status-codes',
-        path: '/docs/headers-status-codes',
+        title: 'HTTP Methods',
+        slug: 'http-methods',
+        path: '/docs/http-methods',
         folder: 'core-concepts',
-        keywords: ['headers', 'status', 'http', 'codes', 'metadata', 'content-type', 'auth'],
+        keywords: ['http', 'methods', 'get', 'post', 'put', 'patch', 'delete', 'crud'],
       },
+
       {
-        title: 'Request Body & JSON',
-        slug: 'request-body-json',
-        path: '/docs/request-body-json',
+        title: 'JSON Responses',
+        slug: 'json-responses',
+        path: '/docs/json-responses',
         folder: 'core-concepts',
-        keywords: ['body', 'json', 'parse', 'payload', 'serialize', 'struct', 'extract'],
+        keywords: ['json', 'response', 'payload', 'serialize', 'object', 'api'],
       },
+
     ],
   },
   {
