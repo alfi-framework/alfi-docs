@@ -10,9 +10,17 @@
       // This script takes the current url and converts the path and query
       // string into just a query string, and then redirects the browser
       // to the new url with only a query string and hash fragment.
-      var pathSegmentsToKeep = 1;
-
       var l = window.location;
+      var path = l.pathname.split('/');
+      var pathSegmentsToKeep = 0;
+      if (path[1] === 'docs') {
+        pathSegmentsToKeep = 0;
+      } else if (path[2] === 'docs') {
+        pathSegmentsToKeep = 1;
+      } else if (l.hostname.endsWith('github.io') && path[1]) {
+        pathSegmentsToKeep = 1;
+      }
+
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
         l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
