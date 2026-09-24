@@ -92,6 +92,108 @@ export const navigation = [
     ],
   },
   {
+    group: 'Middleware',
+    folder: 'middleware',
+    items: [
+      {
+        title: 'Introduction',
+        slug: 'introduction-middleware',
+        path: '/docs/introduction-middleware',
+        folder: 'middleware',
+        keywords: [
+          'middleware',
+          'request pipeline',
+          'pipeline',
+          'hooks',
+          'http',
+          'request',
+          'response',
+        ],
+      },
+
+      {
+        title: 'Creating Middleware',
+        slug: 'creating-middleware',
+        path: '/docs/creating-middleware',
+        folder: 'middleware',
+        keywords: [
+          'middleware',
+          'create',
+          'custom',
+          'function',
+          'handler',
+          'next',
+          'request',
+          'response',
+        ],
+      },
+
+      {
+        title: 'Request Middleware',
+        slug: 'request-middleware',
+        path: '/docs/request-middleware',
+        folder: 'middleware',
+        keywords: [
+          'request',
+          'middleware',
+          'before',
+          'pre',
+          'headers',
+          'authentication',
+          'validation',
+        ],
+      },
+
+      {
+        title: 'Response Middleware',
+        slug: 'response-middleware',
+        path: '/docs/response-middleware',
+        folder: 'middleware',
+        keywords: [
+          'response',
+          'middleware',
+          'after',
+          'post',
+          'headers',
+          'logging',
+          'status',
+        ],
+      },
+
+      {
+        title: 'Middleware Order',
+        slug: 'middleware-order',
+        path: '/docs/middleware-order',
+        folder: 'middleware',
+        keywords: [
+          'middleware',
+          'order',
+          'execution',
+          'chain',
+          'pipeline',
+          'sequence',
+          'next',
+        ],
+      },
+
+      {
+        title: 'Built-in Middleware',
+        slug: 'built-in-middleware',
+        path: '/docs/built-in-middleware',
+        folder: 'middleware',
+        keywords: [
+          'middleware',
+          'built-in',
+          'cors',
+          'logging',
+          'security',
+          'static',
+          'prebuilt',
+        ],
+      },
+    ],
+  },
+  {
     group: 'Advanced',
     folder: 'advanced',
     items: [
