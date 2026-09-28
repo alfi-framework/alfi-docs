@@ -21,4 +21,18 @@ describe('Navigation Data Structure', () => {
       expect(item.title).toBeTruthy()
     })
   })
+
+  it('contains database group with valid active navigation items', () => {
+    const dbGroup = navigation.find((g) => g.group === 'Database')
+    expect(dbGroup).toBeDefined()
+    expect(dbGroup.items.length).toBe(3)
+    
+    const titles = dbGroup.items.map((i) => i.title)
+    expect(titles).toEqual(['Connection', 'Models', 'Queries'])
+    
+    dbGroup.items.forEach((item) => {
+      expect(item.path).toMatch(/^\/docs\/database\//)
+      expect(item.disabled).toBeFalsy()
+    })
+  })
 })

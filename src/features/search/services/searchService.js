@@ -39,7 +39,7 @@ export function buildSearchIndex() {
 
   const miniSearch = new MiniSearch({
     fields: ['title', 'keywords', 'heading', 'text', 'code'],
-    storeFields: ['id', 'type', 'slug', 'pageTitle', 'group', 'heading', 'anchor', 'text', 'code'],
+    storeFields: ['id', 'type', 'slug', 'path', 'pageTitle', 'group', 'heading', 'anchor', 'text', 'code'],
     tokenize: customTokenizer,
     processTerm: (term) => term.toLowerCase(),
     searchOptions: {
@@ -89,6 +89,7 @@ export function buildSearchIndex() {
           id: `section:${slug}:${anchor}`,
           type: 'section',
           slug,
+          path: navItem.path,
           pageTitle: navItem.title,
           group: navItem.group,
           heading: headingText,
@@ -121,6 +122,7 @@ export function buildSearchIndex() {
       id: `page:${slug}`,
       type: 'page',
       slug,
+      path: navItem.path,
       title: navItem.title,
       pageTitle: navItem.title,
       group: navItem.group,

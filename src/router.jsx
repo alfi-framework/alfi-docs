@@ -42,6 +42,10 @@ export const router = createBrowserRouter(
           element: <Navigate to="/docs/introduction" replace />,
         },
         {
+          path: '/docs/database/:slug',
+          element: <DocPage />,
+        },
+        {
           path: '/docs/:slug',
           element: <DocPage />,
         },

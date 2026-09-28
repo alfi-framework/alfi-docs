@@ -29,9 +29,10 @@ export function SearchDialog() {
     closeSearch()
     setQuery('')
 
+    const basePath = item.path || `/docs/${item.slug}`
     const path = item.type === 'section' && item.anchor
-      ? `/docs/${item.slug}#${item.anchor}`
-      : `/docs/${item.slug}`
+      ? `${basePath}#${item.anchor}`
+      : basePath
 
     navigate(path)
   }, [query, addRecentSearch, closeSearch, setQuery, navigate])

@@ -1,4 +1,4 @@
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams, useLocation, Navigate } from 'react-router-dom'
 import { DocsLayout } from '../components/DocsLayout'
 import { CustomMarkdown } from '../components/CustomMarkdown'
 import { TableOfContents } from '../components/TableOfContents'
@@ -23,8 +23,12 @@ const contentMap = Object.entries(modules).reduce((acc, [path, content]) => {
 
 export function DocPage() {
   const { slug } = useParams()
-  const markdownContent = slug ? contentMap[slug] : null
-  const currentNavItem = flatNavigation.find((item) => item.slug === slug)
+  const location = useLocation()
+  const currentNavItem = flatNavigation.find(
+    (item) => item.path === location.pathname || item.slug === slug
+  )
+  const targetSlug = currentNavItem ? currentNavItem.slug : slug
+  const markdownContent = targetSlug ? contentMap[targetSlug] : null
 
   useScrollToHash(markdownContent)
 
@@ -54,7 +58,7 @@ export function DocPage() {
       <div className="flex gap-8">
         <article className="flex-1 max-w-3xl min-w-0">
           <CustomMarkdown content={markdownContent} />
-          <EditOnGithub slug={slug} folder={currentNavItem?.folder} />
+          <EditOnGithub slug={targetSlug} folder={currentNavItem?.folder} />
           <DocPagination />
         </article>
         <TableOfContents content={markdownContent} />
