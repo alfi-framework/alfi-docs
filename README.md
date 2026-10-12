@@ -4,7 +4,7 @@ Alfi is currently built from source using CMake. This guide covers the initial s
 
 ## Requirements
 
-Before installing Alfi, make sure the following tools are available on your system:
+Before installing Alif, make sure the following tools are available on your system:
 
 * **Git**
 * **CMake**
