@@ -1,6 +1,6 @@
 # Installation
 
-Alfi is currently built from source using CMake. This guide covers the initial setup required to build the Alfi CLI and make the `alfi` command available in your terminal.
+Alfi is currently built from source using CMake. This guide covers the initial setup required to build the Alfi CLI and make the `alif` command available in your terminal.
 
 ## Requirements
 
